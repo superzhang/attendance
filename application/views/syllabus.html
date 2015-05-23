@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="WecheckApp">
+<head>
+  <meta charset="UTF-8">
+   <link rel="stylesheet" href= "/wecheck/css/bootstrap.min.css"; media="screen">
+   <link rel="stylesheet" href= "/weiqu/resource/css/styles.css"; media="screen">
+
+    <link rel="stylesheet" href="/wecheck/css/main.css">
+
+  <script src="/resource/js/angular-1.2.9/angular.js"></script>
+
+
+  <script src="/wecheck/js/syllabus.js"></script>
+
+
+<script src="http://www.w3cschool.cc/try/bootstrap/twitter-bootstrap-v2/docs/assets/js/jquery.js"></script>
+<script src="/wecheck/js/ui-bootstrap-tpls-0.11.0.js"></script>
+
+     <script type="text/javascript">
+
+
+
+</script>
+  <title>考勤系统</title>
+ </head>
+ <body >
+      
+
+  <div class="container" ng-controller="CourseListCtrl">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="index">首页</a></li>
+          <li><a href="manager_class">班级管理</a></li>
+          <li><a href="manager_course">课程管理</a></li>
+          <li class="active"><a href="#">课程表</a></li>
+          <li><a href="manager_checklist">考勤表</a></li>
+        </ul>
+        <h3 class="text-muted">考勤系统</h3>
+      </div>
+     
+       
+  
+<form ng-submit="add()" class="form-inline"> 
+ 
+   
+<div class="form-group">
+  <select class="form-control" ng-model="customSelected.SelClass" ng-options="Class.class_name for Class in clas" >
+    <option class="input-medium" value="">-------请选择班级-------</option>
+  </select >
+</div>
+<div class="form-group">
+     <select class="form-control"  ng-model="customSelected.SelCourse" ng-options="Course.CourseName for  Course in course">
+    <option class="input-medium" value="">-------请选择课程--------</option>
+  </select>
+</div>
+
+<div class="form-group">
+     <select class="form-control" style="width:100px" ng-model="customSelected.SelTime" >
+    <option class="input-medium" value="">请选择时间</option>
+    <option class="input-medium" value="1">周一</option>
+    <option class="input-medium" value="2">周二</option>
+    <option class="input-medium" value="3">周三</option>
+    <option class="input-medium" value="4">周四</option>
+    <option class="input-medium" value="5">周五</option>
+  </select>
+     
+
+  
+</div>
+<div class="form-group">
+     <input type="text" class="form-control" name="" ng-model="customSelected.Info" placeholder="课程信息">
+</div>
+    <div class="form-group">
+            
+          
+          <button class="btn btn-success ">添加</button>
+        
+   </div>
+  
+    <!--  <pre>Model:{{customSelected | json}}</pre> -->
+         
+<!--          <input id="getValue" value="GetValue" type="button" />
+ -->     
+     </form>
+     <div class="span6">
+   <!--   <pre>Model:{{List | json}}</pre>   -->
+     <table class="table" ng-model="wecheck">
+  <tr>
+    <th>班级
+    </th>
+    <th>课程
+    </th>
+    <th>上课时间
+    </th>
+    <th>课程信息
+    </th>
+      
+  </tr>
+  <tr ng-repeat=" list in wecheck | filter:query  ">
+    <td>{{list.class_name}}
+    </td>
+    <td>{{list.course_name}}
+    </td>
+    <td>{{list.time}}
+    </td>
+ <td>
+   {{list.course_info}}
+ </td>
+    <td>
+    <input type="button" value="删除" class="btn btn-danger" ng-click="removeRow(list.syllabus_id)"/>
+    </td>
+  </tr>
+</table>
+     </div> 
+    
+</div>
+ </body>
+ </html>

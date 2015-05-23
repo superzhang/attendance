@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="WecheckApp">
+<head>
+  <meta charset="UTF-8">
+   <link rel="stylesheet" href= "/wecheck/css/bootstrap.min.css"; media="screen">
+   <link rel="stylesheet" href= "/weiqu/resource/css/styles.css"; media="screen">
+
+    <link rel="stylesheet" href="/wecheck/css/main.css">
+
+  <script src="/resource/js/angular-1.2.9/angular.js"></script>
+
+
+  <script src="/wecheck/js/course.js"></script>
+
+
+<script src="http://www.w3cschool.cc/try/bootstrap/twitter-bootstrap-v2/docs/assets/js/jquery.js"></script>
+<script src="/wecheck/js/ui-bootstrap-tpls-0.11.0.js"></script>
+
+     <script type="text/javascript">
+
+
+
+</script>
+  <title>考勤系统</title>
+ </head>
+ <body ng-controller="CourseListCtrl" >
+      
+
+  <div class="container" >
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li ><a href="index">首页</a></li>
+          <li ><a href="manager_class">班级管理</a></li>
+          <li class="active"><a href="#">课程管理</a></li>
+           <li><a href="syllabus">课程表</a></li>
+           <li ><a href="manager_checklist">考勤表</a></li>
+        </ul>
+        <h3 class="text-muted">考勤系统</h3>
+      </div>
+     
+       
+  
+<form class="form-inline" role="form" ng-submit="add()">
+  <div class="form-group">
+   <!--  <label class="sr-only" for="exampleInputEmail2">Email address</label> -->
+    <input type="text" class="form-control" id="CourseName" placeholder="课程名称" ng-model="inputCourse.CourseName">
+  </div>
+  <div class="form-group">
+   
+     
+      <input class="form-control" type="text" id="Lenth" placeholder="周课时(节)" ng-model="inputCourse.CourseLenth">
+   (节/周)
+  </div>
+ 
+
+  <button  class="btn btn-success" >添加</button>
+</form>
+     <div class="span6">
+   <!--   <pre>Model:{{List | json}}</pre>   -->
+     <table class="table">
+      <thead>
+    
+
+   
+    <th>课程名称
+    </th>
+    <th>周课时(节)
+    </th>
+  
+  <th>
+    操作
+  </th>
+  </tr>
+  </thead>
+    <tbody>
+      <tr ng-repeat="course in wecheck ">
+    <td>{{course.CourseName}}
+    </td>
+   
+    <td>
+      {{course.CourseLenth}}
+    </td>
+  
+    <td>
+    <button class="btn btn-danger" ng-click="removeRow(course.CourseID)">删除</button>
+    </td>
+  </tr>
+</tbody>
+</table>
+    
+     </div> 
+    
+
+</div>
+ </body>
+ </html>
